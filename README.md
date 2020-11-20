@@ -5,7 +5,7 @@ Things I added:
 project management organizations.
 - Additional Project and Employee attributes/relationships to better
 model real PM organizations.
--Pagination and Sorting of the table records using JpaRepository, 
+- Pagination and Sorting of the table records using JpaRepository, 
 Hibernate and Thymeleaf.
 - Extra real-time graphs using graph.js and back end SQL queries to give 
 the Dashboard more oomph.
