@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head">
+    <!--    Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--    Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+
+<!--    chart js for charts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script>
+
+    <title>Timelines | Project Management</title>
+</head>
+
+
+
+
+<nav th:fragment="navbar" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" th:href="@{/}">Timelines | Project Management</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+<!--            #request.requestURI uses thymeleaf to show/highlight active nav link of current page-->
+            <li class="nav-item" th:classappend="${#request.requestURI == '/' ? 'active':''}">
+                <a class="nav-link" th:href="@{/}"><span>Home</span></a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.requestURI == '/projects' ? 'active':''}">
+                <a class="nav-link" th:href="@{/projects}"><span>Projects</span></a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.requestURI == '/managers' ? 'active':''}">
+                <a class="nav-link" th:href="@{/managers}"><span>Managers</span></a>
+            </li>
+            <li class="nav-item" th:classappend="${#request.requestURI == '/employees' ? 'active':''}">
+                <a class="nav-link" th:href="@{/employees}"><span>Employees</span></a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+
+
+<footer class="footer" th:fragment="footer" >
+    <p>&copy; 2020 | Timelines | Project Management |
+        <a href="mailto:hege@example.com">contact@timelines.business</a></p>
+</footer>
+
+</html>

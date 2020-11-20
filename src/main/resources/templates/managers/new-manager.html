@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- thymeleaf fragment in layouts.html -->
+    <head th:replace="layouts :: head"></head>
+</head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container content">
+    <form th:object="${manager}" th:action="@{/managers/save-new}" method="POST">
+
+        <br><br>
+        <label>First Name</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input class="form-control" type="text" th:field="${manager.firstName}">
+            <span style="color: firebrick" th:if="${#fields.hasErrors('firstName')}"
+                  th:errors="${manager.firstName}"></span>
+        </div>
+
+        <label>Last Name</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input class="form-control" type="text"  th:field="${manager.lastName}">
+            <span style="color: firebrick" th:if="${#fields.hasErrors('lastName')}"
+                  th:errors="${manager.lastName}"></span>
+        </div>
+
+        <label>Email Address</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input class="form-control" type="text"  th:field="${manager.email}">
+            <span style="color: firebrick" th:if="${#fields.hasErrors('email')}"
+                  th:errors="${manager.email}"></span>
+        </div>
+
+
+
+
+        <button class="btn btn-info col-2" type="submit">Create Project Manager</button>
+        <br><br>
+    </form>
+
+</div>
+
+
+<!-- thymeleaf fragment in layouts.html -->
+<footer th:replace="layouts :: footer"></footer>
+
+
+</body>
+
+</html>

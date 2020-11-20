@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- thymeleaf fragment in layouts.html -->
+    <head th:replace="layouts :: head"></head>
+</head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container content">
+    <form th:object="${project}" th:action="@{/projects/save-update}" method="POST">
+
+        <!--        this hidden projectId is used to bind to the project that was clicked on for update DB operations-->
+        <input type="hidden" th:field="${project.projectId}"/>
+
+        <br><br>
+        <label>Project Name</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input class="form-control" type="text" th:field="${project.name}">
+            <span style="color: firebrick" th:if="${#fields.hasErrors('name')}"
+                  th:errors="${project.name}"></span>
+        </div>
+
+        <label>Project Status</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <select class="form-control" th:field="${project.stage}">
+                <option th:value="NOTSTARTED"> Not Started</option>
+                <option th:value="INPROGRESS"> In Progress</option>
+                <option th:value="COMPLETED"> Completed</option>
+            </select>
+        </div>
+
+        <label>Project Description</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <textarea class="form-control" type="text"
+                      th:field="${project.description}"></textarea>
+            <span style="color: firebrick" th:if="${#fields.hasErrors('description')}"
+                  th:errors="${project.description}"></span>
+        </div>
+
+        <label>Project Location</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input class="form-control" type="text" th:field="${project.location}">
+            <span style="color: firebrick" th:if="${#fields.hasErrors('location')}"
+                  th:errors="${project.location}"></span>
+        </div>
+
+        <label>Project Manager</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <select class="form-control" th:field="${project.managers}">
+                <option th:each="manager : ${allManagers}"
+                        th:value="${manager.managerId}"
+                        th:text="${manager.firstName} + ' ' +${manager.lastName}">
+                </option>
+            </select>
+        </div>
+
+        <label>Project Employees</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <select class="form-control" th:field="${project.employees}" multiple="multiple">
+                <option th:each="employee : ${allEmployees}"
+                        th:value="${employee.employeeId}"
+                        th:text="${employee.firstName} + ' ' + ${employee.lastName}">
+                </option>
+            </select>
+        </div>
+
+        <button class="btn btn-info col-2" type="submit">Update Project</button>
+        <br><br>
+    </form>
+
+</div>
+
+
+<!-- thymeleaf fragment in layouts.html -->
+<footer th:replace="layouts :: footer"></footer>
+
+
+</body>
+</html>

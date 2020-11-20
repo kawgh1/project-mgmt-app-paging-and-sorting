@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- thymeleaf fragment in layouts.html -->
+    <head th:replace="layouts :: head"></head>
+</head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+
+<!--main container div-->
+<div class="container content">
+    <h2>Main Dashboard</h2>
+<!--    version number read from application.properties, passed in HomeController -->
+    <a th:text="${versionNumber}"></a>
+    <hr>
+    <div class="container">
+        <h4>Current Projects</h4>
+        <div class="row">
+            <div class="col-md-6">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th style="text-align: center;">Project Name</th>
+                        <th style="text-align: center;">Project Stage</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="aProject : ${projectsList}">
+                        <td th:text="${aProject.name}"></td>
+                        <td th:text="${aProject.stage}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- javascript pie chart-->
+            <div class="col-md-4">
+                <canvas id="myPieChart" width="25" height="25"></canvas>
+
+                <!-- chart data script using thymeleaf convention, see myChart.js file line 1-->
+                <script>
+                    let chartData = "[[${projectStatusCount}]]"
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h4>Managers</h4>
+        <div class="row">
+            <div class="col-md-6">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th style="text-align: center;">First Name</th>
+                        <th style="text-align: center;">Last Name</th>
+                        <th style="text-align: center;">Project Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="aManager : ${managersListProjectCount}">
+                        <td th:text="${aManager.firstName}"></td>
+                        <td th:text="${aManager.lastName}"></td>
+                        <td th:text="${aManager.projectCount}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- javascript pie chart-->
+            <div class="col-md-4">
+                <canvas id="managerPieChart" width="25" height="25"></canvas>
+
+                <!-- chart data script using thymeleaf convention, see myChart.js file line 1-->
+                <script>
+                    let managerChartData = "[[${managerStatusCount}]]"
+                </script>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <h4>Employees</h4>
+        <div class="row">
+            <div class="col-md-6">
+
+                <table class="table table-bordered table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th style="text-align: center;">First Name</th>
+                        <th style="text-align: center;">Last Name</th>
+                        <th style="text-align: center;">Project Count</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="aEmployee : ${employeesListProjectCount}">
+                        <td th:text="${aEmployee.firstName}"></td>
+                        <td th:text="${aEmployee.lastName}"></td>
+                        <td th:text="${aEmployee.projectCount}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- javascript pie chart-->
+            <div class="col-md-4">
+                <canvas id="employeePieChart" width="25" height="25"></canvas>
+
+                <!-- chart data script using thymeleaf convention, see myChart.js file line 1-->
+                <script>
+                    let employeeChartData = "[[${employeeStatusCount}]]"
+                </script>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<script type="text/javascript" th:src="@{js/myChart.js}"></script>
+
+<!-- thymeleaf fragment in layouts.html -->
+<footer th:replace="layouts :: footer"></footer>
+
+</body>
+</html>

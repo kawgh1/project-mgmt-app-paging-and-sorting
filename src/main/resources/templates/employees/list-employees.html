@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- thymeleaf fragment in layouts.html -->
+<head th:replace="layouts :: head"></head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container content">
+    <h3>Employee Directory</h3>
+    <hr>
+
+    <!--    Add new Employee Button -->
+    <a th:href="@{employees/new}" class="btn btn-primary btn-sm mb-3">New Employee</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>
+                <a th:href="@{'/employees/page/' + ${currentPage} + '?sortField=firstName&sortDir=' +${reverseSortDir}}">
+                    First Name</a>
+            </th>
+            <th>
+                <a th:href="@{'/employees/page/' + ${currentPage} + '?sortField=lastName&sortDir=' +${reverseSortDir}}">
+                    Last Name</a></th>
+            <th>
+                <a th:href="@{'/employees/page/' + ${currentPage} + '?sortField=email&sortDir=' +${reverseSortDir}}">
+                    Email</a></th>
+            <th>
+                <a th:href="@{'/employees/page/' + ${currentPage} + '?sortField=position&sortDir=' +${reverseSortDir}}">
+                    Position</a></th>
+            <th>Actions</th>
+            <th>Manager</th>
+
+<!--            <th>Project</th>-->
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aEmployee : ${employees}">
+            <td th:text="${aEmployee.firstName}"></td>
+            <td th:text="${aEmployee.lastName}"></td>
+            <td th:text="${aEmployee.email}"></td>
+            <td th:text="${aEmployee.position}"></td>
+            <td><a th:href="@{/employees/update(empId=${aEmployee.employeeId})}"
+                   class="btn btn-info btn-sm">Update</a>
+                <a th:href="@{/employees/delete(empId=${aEmployee.employeeId})}"
+                   class="btn btn-danger btn-sm"
+                   onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false"
+                >Delete</a>
+            </td>
+            <td th:text="${aEmployee.manager.firstName} + ' ' + ${aEmployee.manager.lastName}"></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+
+<!--    Add Pagination and Sorting -->
+    <div th:if = "${totalPages > 1}">
+        <!--            bootstrap grid, divide a single row into columns-->
+        <div class="row col-sm-10">
+
+                <div class="col-sm-2">
+                    Total Rows: [[${totalItems}]]
+                </div>
+                <div class="col-sm-3">
+<!--                    display numbered page numbers as links to those pages-->
+                    <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{'/employees/page/' + ${i} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+                </div>
+                <div class="col-sm-1">
+                    <!--                    next page -->
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/employees/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Next</a>
+                    <span th:unless="${currentPage < totalPages}">Next</span>
+                </div>
+                <div class="col-sm-1">
+<!--                    last page -->
+                    <a th:if="${currentPage < totalPages}" th:href="@{'/employees/page/' + ${totalPages} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Last</a>
+                    <span th:unless="${currentPage < totalPages}">Last</span>
+                </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- thymeleaf fragment in layouts.html -->
+<footer th:replace="layouts :: footer"></footer>
+
+</body>
+</html>

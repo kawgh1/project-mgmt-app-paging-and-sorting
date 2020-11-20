@@ -1,0 +1,41 @@
+html, body{
+    background: white;
+    height: 100%;
+}
+
+/*sticky footer*/
+body {
+    display: flex;
+    flex-direction: column;
+
+}
+.content {
+    flex: 1 0 auto;
+}
+.footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+
+}
+
+/*.myPieChart {*/
+/*    height: 100px !important;*/
+/*    width: 200px !important;*/
+/*}*/
+
+/*active navs*/
+#nav ul li .active {
+    color: white;
+}
+
+.form-control {
+    width: 15rem;
+}
+
+/*submit button on all forms*/
+.col-2 {
+    min-width: 150px;
+}

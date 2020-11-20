@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <!-- thymeleaf fragment in layouts.html -->
+    <head th:replace="layouts :: head"></head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container content">
+    <h3>Project Directory</h3>
+    <hr>
+
+<!--    Add new Project Button -->
+    <a th:href="@{projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th style="text-align: center;">
+                <a th:href="@{'/projects/page/' + ${currentPage} + '?sortField=name&sortDir=' +${reverseSortDir}}">
+                    Project Name</a>
+            </th>
+            <th style="text-align: center;">
+                <a th:href="@{'/projects/page/' + ${currentPage} + '?sortField=stage&sortDir=' +${reverseSortDir}}">
+                    Project Stage</a>
+            </th>
+            <th style="text-align: center; width:30%;">
+                <a th:href="@{'/projects/page/' + ${currentPage} + '?sortField=description&sortDir=' +${reverseSortDir}}">
+                    Description</a>
+            </th>
+
+            <th style="text-align: center;">
+                <a th:href="@{'/projects/page/' + ${currentPage} + '?sortField=location&sortDir=' +${reverseSortDir}}">
+                    Location</a>
+            </th>
+            <th style="text-align: center;">Project Manager</th>
+            <th  style="text-align: center;">Actions</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+            <tr th:each="aProject : ${projects}">
+                <td th:text="${aProject.name}"></td>
+                <td th:text="${aProject.stage}"></td>
+                <td width="30%" th:text="${aProject.description}"></td>
+                <td th:text="${aProject.location} ?: 'None'"></td>
+                <td th:each="manager : ${aProject.managers}"
+                    th:text="${manager.firstName} + ' ' + ${manager.lastName} ?: 'None'"></td>
+
+                <td ><a th:href="@{/projects/update(proId=${aProject.projectId})}"
+                       class="btn btn-info btn-sm">Update</a>
+
+                    <a th:href="@{/projects/delete(proId=${aProject.projectId})}"
+                       class="btn btn-danger btn-sm"
+                       onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false"
+                    >Delete</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <!--    Add Pagination and Sorting -->
+    <div th:if = "${totalPages > 1}">
+        <!--            bootstrap grid, divide a single row into columns-->
+        <div class="row col-sm-10">
+
+            <div class="col-sm-2">
+                Total Rows: [[${totalItems}]]
+            </div>
+            <div class="col-sm-3">
+                <!--                    display numbered page numbers as links to those pages-->
+                <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+                        <a th:if="${currentPage != i}" th:href="@{'/projects/page/' + ${i} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">[[${i}]]</a>
+                        <span th:unless="${currentPage != i}">[[${i}]]</span> &nbsp; &nbsp;
+                    </span>
+            </div>
+            <div class="col-sm-1">
+                <!--                    next page -->
+                <a th:if="${currentPage < totalPages}" th:href="@{'/projects/page/' + ${currentPage + 1} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Next</a>
+                <span th:unless="${currentPage < totalPages}">Next</span>
+            </div>
+            <div class="col-sm-1">
+                <!--                    last page -->
+                <a th:if="${currentPage < totalPages}" th:href="@{'/projects/page/' + ${totalPages} + '?sortField=' + ${sortField} +'&sortDir=' + ${sortDir}}">Last</a>
+                <span th:unless="${currentPage < totalPages}">Last</span>
+            </div>
+        </div>
+
+    </div>
+
+    <br>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th style="text-align: center;">Project Name</th>
+            <th style="text-align: center;">Location</th>
+            <th style="text-align: center;">Project Manager</th>
+            <th colspan="5" style="text-align: center;">Employees</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aProject : ${projects}">
+            <td th:text="${aProject.name}"></td>
+            <td th:text="${aProject.location} ?: 'None'"></td>
+            <td th:each="manager : ${aProject.managers}"
+                th:text="${manager.firstName} + ' ' + ${manager.lastName} ?: 'None'"></td>
+
+            <td th:each="employee : ${aProject.employees}"
+                th:text="${employee.firstName} + ' ' + ${employee.lastName} ?: 'None'"></td>
+
+
+
+        </tr>
+        </tbody>
+    </table>
+
+
+</div>
+
+<!-- thymeleaf fragment in layouts.html -->
+<footer th:replace="layouts :: footer"></footer>
+</body>
+</html>
