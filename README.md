@@ -1,5 +1,7 @@
 #### Spring Project Management App
 
+Based on project from Imtiaz Ahmad
+
 #### Things I added:
 - the Manager entity class and implementation to be more realistic to
 project management organizations.
