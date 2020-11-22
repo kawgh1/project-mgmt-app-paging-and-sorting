@@ -15,7 +15,8 @@ public class Project {
     @Id
     // AUTO lets SQL Database handle Primary Key's,
     // IDENTITY lets Hibernate manage (good with pre filled table data)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // SEQUENCE uses an SQL sequence to track IDs, Postgres requires it
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="project_seq")
     private long projectId;
     @NotBlank(message="*Project name required")
     @Size(min=2, max=50)

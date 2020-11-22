@@ -13,10 +13,11 @@ the Dashboard more oomph.
 - Separated the Add Entity and Update Entity implementations with separate
 routes, methods and pages
 - Added custom CSS for mobile and tablet views
-- Customized error page content, sticky footer 
+- Customized error page content, sticky footer
+- Live Heroku deployment 
 
-#### Things I learned:
-- AWS deployment
+#### Things I learned about:
+- AWS deployment and RDS
 - Docker Container of a Spring Boot Web App
 - Google Charts
 - Building real time graphs from backend SQL queries using graph.js

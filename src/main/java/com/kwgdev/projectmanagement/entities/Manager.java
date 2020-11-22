@@ -16,7 +16,8 @@ public class Manager {
     @Id
     // AUTO lets SQL Database handle Primary Key's,
     // IDENTITY lets Hibernate manage (good with pre filled table data)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    // SEQUENCE uses an SQL sequence to track IDs, Postgres requires it
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator="manager_seq")
     private long managerId;
 
     @NotBlank(message="*First name required")
