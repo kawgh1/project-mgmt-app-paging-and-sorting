@@ -2,6 +2,7 @@ package com.kwgdev.projectmanagement.service;
 
 import com.kwgdev.projectmanagement.dao.ProjectRepository;
 import com.kwgdev.projectmanagement.dto.ChartData;
+import com.kwgdev.projectmanagement.dto.TimeChartData;
 import com.kwgdev.projectmanagement.entities.Employee;
 import com.kwgdev.projectmanagement.entities.Project;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +59,10 @@ public class ProjectService {
 
         // return sortable object only
 //        return projectRepo.findAll(sort);
+    }
+
+    // google timelines
+    public List<TimeChartData> getTimeData(){
+       return projectRepo.getTimeData();
     }
 }

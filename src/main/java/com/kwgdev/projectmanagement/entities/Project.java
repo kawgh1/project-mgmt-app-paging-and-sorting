@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -29,6 +30,12 @@ public class Project {
     @NotBlank(message="*Project description required")
     @Size(min=2, max=250)
     private String description;
+
+    @NotNull(message="*Project Start Date required")
+    private Date startDate;
+
+    @NotNull(message="*Project End Date required")
+    private Date endDate;
 
 
     @ManyToMany(cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH},
@@ -135,5 +142,21 @@ public class Project {
 
     public void setLocation(String location) {
         this.location = location;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 }

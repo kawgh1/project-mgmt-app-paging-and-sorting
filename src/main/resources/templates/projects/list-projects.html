@@ -11,6 +11,8 @@
     <h3>Project Directory</h3>
     <hr>
 
+    <!--    View Project Timlines Button -->
+    <a th:href="@{/timelines}" class="btn btn-primary btn-sm mb-3">View Timelines</a>
 <!--    Add new Project Button -->
     <a th:href="@{projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
 
@@ -46,14 +48,14 @@
                 <td th:text="${aProject.stage}"></td>
                 <td width="30%" th:text="${aProject.description}"></td>
                 <td th:text="${aProject.location} ?: 'None'"></td>
-                <td th:each="manager : ${aProject.managers}"
+                <td  th:each="manager : ${aProject.managers}"
                     th:text="${manager.firstName} + ' ' + ${manager.lastName} ?: 'None'"></td>
 
                 <td ><a th:href="@{/projects/update(proId=${aProject.projectId})}"
-                       class="btn btn-info btn-sm">Update</a>
+                       class="btn btn-info btn-sm CrudButton">Update</a>
 
                     <a th:href="@{/projects/delete(proId=${aProject.projectId})}"
-                       class="btn btn-danger btn-sm"
+                       class="btn btn-danger btn-sm CrudButton"
                        onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false"
                     >Delete</a>
                 </td>

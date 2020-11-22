@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- thymeleaf fragment in layouts.html -->
+    <head th:replace="layouts :: head"></head>
+</head>
+<body>
+
+<!-- thymeleaf fragment in layouts.html -->
+<nav th:replace="layouts :: navbar"></nav>
+
+<div class="container content">
+    <h2 class="text-center">Project Timelines</h2>
+    <br>
+<!--    google scripts for timeline charts-->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+
+
+
+
+    <!-- chart data script using thymeleaf convention, see googleTimelines.js file line 1-->
+    <script>
+        let chartData = "[[${projectTimeList}]]";
+        let chartDataDecoded = decodeHtml(chartData);
+        let chartJsonArray = JSON.parse(chartDataDecoded);
+        let resultArray = [];
+
+        for(let i in chartJsonArray){
+            resultArray.push([i, chartJsonArray[i]]);
+        }
+
+        google.charts.load('current', {'packages':['timeline']});
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            let container = document.getElementById('chart_div');
+            let chart = new google.visualization.Timeline(container);
+            let dataTable = new google.visualization.DataTable();
+
+            dataTable.addColumn({ type: 'string', id: 'Project' });
+            dataTable.addColumn({ type: 'date', id: 'Start' });
+            dataTable.addColumn({ type: 'date', id: 'End' });
+
+            for (let i = 0; i < resultArray.length; i++) {
+                dataTable.addRows([
+                    [resultArray[i][1]["projectName"],
+                        new Date(resultArray[i][1]["startDate"]),
+                        new Date(resultArray[i][1]["endDate"])]
+                ]);
+            }
+            chart.draw(dataTable, options);
+        }
+
+        function decodeHtml(html) {
+            let txt = document.createElement("textarea");
+            txt.innerHTML = html;
+            return txt.value;
+        }
+
+    //    resize chart to window
+        let options = {
+            width: $(window).width()*0.9,
+            height: 300
+        };
+    </script>
+
+
+    <!-- timeline chart -->
+
+    <div id="chart_div"></div>
+
+
+    <a th:href="@{projects/new}" class="btn btn-primary btn-sm mb-3">New Project</a>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th style="text-align: center;">Project Name</th>
+            <th style="text-align: center;">Project Stage</th>
+            <th style="text-align: center;">Start Date</th>
+            <th style="text-align: center;">End Date</th>
+            <th style="text-align: center; width:30%;">Description</th>
+
+            <th style="text-align: center;">Location</th>
+            <th style="text-align: center;">Project Manager</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aProject : ${projects}">
+            <td th:text="${aProject.name}"></td>
+            <td th:text="${aProject.stage}"></td>
+            <td th:text="${aProject.startDate.toString().substring(0,10)}"></td>
+            <td th:text="${aProject.endDate.toString().substring(0,10)}"></td>
+            <td width="30%" th:text="${aProject.description}"></td>
+            <td th:text="${aProject.location} ?: 'None'"></td>
+            <td th:each="manager : ${aProject.managers}"
+                th:text="${manager.firstName} + ' ' + ${manager.lastName} ?: 'None'"></td>
+
+        </tr>
+        </tbody>
+    </table>
+
+    <br>
+</div>
+<script type="text/javascript" th:src="@{js/googleTimelines.js}"></script>
+
+
+</body>
+
+</html>

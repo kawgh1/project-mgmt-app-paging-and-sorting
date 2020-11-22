@@ -1,5 +1,8 @@
 package com.kwgdev.projectmanagement.controllers;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.kwgdev.projectmanagement.dto.TimeChartData;
 import com.kwgdev.projectmanagement.entities.Employee;
 import com.kwgdev.projectmanagement.entities.Manager;
 import com.kwgdev.projectmanagement.entities.Project;
@@ -42,7 +45,7 @@ public class ProjectController {
         // original un-paginated
 //        List<Project> projects = projectService.findAll();
 //        model.addAttribute("projects", projects);
-//        return "projects/list-projects";
+//        return "projects/list-projects";z
 
         // we set default sort to ascending by project name
         return findPaginated(1, "name", "asc", model);
@@ -158,6 +161,8 @@ public class ProjectController {
         return "projects/list-projects";
 
     }
+
+
 
 
 //    // Function to remove duplicates from an ArrayList

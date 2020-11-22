@@ -1,6 +1,6 @@
 #### Spring Project Management App
 
-Things I added:
+#### Things I added:
 - the Manager entity class and implementation to be more realistic to
 project management organizations.
 - Additional Project and Employee attributes/relationships to better
@@ -14,6 +14,15 @@ the Dashboard more oomph.
 routes, methods and pages
 - Added custom CSS for mobile and tablet views
 - Customized error page content, sticky footer 
+
+#### Things I learned:
+- AWS deployment
+- Docker Container of a Spring Boot Web App
+- Google Charts
+- Building real time graphs from backend SQL queries using graph.js
+- Pagination and Sorting using JPA Repository
+- Data Transfer Objects (DTO)
+- deeper knowledge of Thymeleaf templating
 
 Pagination and Sorting from Java Guides: https://www.youtube.com/watch?v=Aie8n12EFQc
 
