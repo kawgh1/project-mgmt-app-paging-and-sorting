@@ -1,6 +1,7 @@
 package com.kwgdev.projectmanagement.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -32,10 +33,14 @@ public class Project {
     @Size(min=2, max=250)
     private String description;
 
-    @NotNull(message="*Project Start Date required")
+    @NotNull(message="*Project Start Date mm/dd/yyyy required")
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @NotNull(message="*Project End Date required")
+    @NotNull(message="*Project End Date mm/dd/yyyy required")
+    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @Temporal(TemporalType.DATE)
     private Date endDate;
 
 
