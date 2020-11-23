@@ -101,24 +101,23 @@ public class ProjectController {
 
     @PostMapping("/save-update")
     public String updateProject(@Valid Project project, @RequestParam List<Manager> projectManagers,
-                                @RequestParam List<Employee> projectEmployees,
                                 Errors errors, Model model) {
 
 
-        // display all managers
-        List<Manager> managers = managerService.findAll();
-        model.addAttribute("allManagers", managers);
-
-        // display all employees
-        List<Employee> employees = employeeService.findAll();
-        model.addAttribute("allEmployees", employees);
+//        // display all managers
+//        List<Manager> managers = managerService.findAll();
+//        model.addAttribute("allManagers", managers);
+//
+//        // display all employees
+//        List<Employee> employees = employeeService.findAll();
+//        model.addAttribute("allEmployees", employees);
 
         if (errors.hasErrors()) {
             return "projects/update-project";
         }
 
-        project.setEmployees(projectEmployees);
-        project.setManagers(projectManagers);
+//        project.setEmployees(projectEmployees);
+//        project.setManagers(projectManagers);
 
 
 

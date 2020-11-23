@@ -53,6 +53,7 @@ public class Project {
             joinColumns = @JoinColumn(name = "project_id"),
             inverseJoinColumns = @JoinColumn(name = "manager_id"))
     @JsonIgnore
+    @NotNull(message="*Project Manager required")
     private List<Manager> managers;
 
 

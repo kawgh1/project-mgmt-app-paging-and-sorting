@@ -95,7 +95,8 @@ public class EmployeeController {
     }
 
     @PostMapping("/save-update")
-    public String updateEmployee(@Valid Employee employee, Errors errors, @RequestParam Manager manager, Model model ) {
+    public String updateEmployee(@Valid Employee employee, Errors errors,
+                                 @RequestParam Manager manager, Model model ) {
 
         List<Manager> managers = managerService.findAll();
         model.addAttribute("allManagers", managers);
