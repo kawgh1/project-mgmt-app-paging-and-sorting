@@ -1,6 +1,8 @@
 #### Spring Project Management App
 
-Based on project from Imtiaz Ahmad
+Based on project by Imtiaz Ahmad
+
+To view my live production site please visit: https://timelines-project-mgmt-app.herokuapp.com
 
 #### Things I added:
 - the Manager entity class and implementation to be more realistic to
