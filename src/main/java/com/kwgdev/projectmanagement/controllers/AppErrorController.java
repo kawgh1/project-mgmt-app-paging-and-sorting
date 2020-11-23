@@ -22,7 +22,7 @@ public class AppErrorController implements ErrorController {
                 return "errorpages/error-404";
             }
             else if(statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error-502";
+                return "errorpages/error-502";
             }
             else if(statusCode == HttpStatus.FORBIDDEN.value()) {
                 return "errorpages/error-404";

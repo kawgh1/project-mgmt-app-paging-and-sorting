@@ -100,7 +100,7 @@ public class ProjectController {
     }
 
     @PostMapping("/save-update")
-    public String updateProject(@Valid Project project,
+    public String updateProject(@Valid Project project, @RequestParam List<Manager> projectManagers,
                                 Errors errors, Model model) {
 
 
@@ -128,10 +128,10 @@ public class ProjectController {
 
 //        // if project is assigned a new manager from the update page,
 //        // update that manager to contain this project
-//        for(Manager manager : projectManagers) {
-//            manager.addProject(project);
-//            managerService.save(manager);
-//        }
+        for(Manager manager : projectManagers) {
+            manager.addProject(project);
+            managerService.save(manager);
+        }
 //
 //        for(Manager manager : managers) {
 //            // ignore remove project if manager just received this project in update
