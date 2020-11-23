@@ -73,11 +73,11 @@
 
         <label>Start Date</label>
         <div class="form-group row" style="padding-left: 20px;">
-            <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.startDate.toString().substring(0,10)}">
+            <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.startDate}.toString().substring(0,10)">
         </div>
         <label>End Date</label>
         <div class="form-group row" style="padding-left: 20px;">
-            <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.endDate.toString().substring(0,10)}">
+            <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.endDate}.toString().substring(0,10)">
         </div>
 
         <!--        date picker -->
