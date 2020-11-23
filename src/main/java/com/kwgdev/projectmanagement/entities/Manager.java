@@ -122,4 +122,7 @@ public class Manager {
 
     }
 
+    public void removeProject(Project project) {
+        this.projects.remove(project);
+    }
 }

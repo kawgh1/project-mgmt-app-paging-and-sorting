@@ -101,6 +101,7 @@ public class ProjectController {
 
     @PostMapping("/save-update")
     public String updateProject(@Valid Project project, @RequestParam List<Manager> projectManagers,
+                                @RequestParam List<Employee> projectEmployees,
                                 Errors errors, Model model) {
 
 
@@ -116,18 +117,36 @@ public class ProjectController {
             return "projects/update-project";
         }
 
+        project.setEmployees(projectEmployees);
+        project.setManagers(projectManagers);
+
 
 
 
         // this will handle saving the updated project to the database
         projectService.save(project);
 
-        // if project is assigned a new manager from the update page,
-        // update that manager to contain this project
+
+//        // if project is assigned a new manager from the update page,
+//        // update that manager to contain this project
         for(Manager manager : projectManagers) {
             manager.addProject(project);
             managerService.save(manager);
         }
+//
+//        for(Manager manager : managers) {
+//            // ignore remove project if manager just received this project in update
+//            if(projectManagers.contains(manager)) {
+//                continue;
+//            }
+//            // if old manager had project, remove that project
+//            if (manager.getProjects().contains(project)) {
+//                manager.removeProject(project);
+//            }
+//            continue;
+//        }
+
+
 
 
 
