@@ -5,9 +5,10 @@
     <head th:replace="layouts :: head"></head>
 </head>
 <body>
-
 <!-- thymeleaf fragment in layouts.html -->
-<nav th:replace="layouts :: navbar"></nav>
+<div>
+    <nav th:replace="layouts :: navbar"></nav>
+</div>
 
 <div class="container content">
     <h2 class="text-center">Project Timelines</h2>
@@ -107,7 +108,10 @@
     <br>
 </div>
 <script type="text/javascript" th:src="@{js/googleTimelines.js}"></script>
-
+<!-- thymeleaf fragment in layouts.html -->
+<div>
+    <footer th:replace="layouts :: footer"></footer>
+</div>
 
 </body>
 

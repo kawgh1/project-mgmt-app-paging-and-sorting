@@ -7,7 +7,9 @@
 <body>
 
 <!-- thymeleaf fragment in layouts.html -->
-<nav th:replace="layouts :: navbar"></nav>
+<div>
+    <nav th:replace="layouts :: navbar"></nav>
+</div>
 
 <div class="container content">
 <h2 style="display: flex; justify-content: center; align-items: center;">403 Error - Forbidden</h2>
@@ -15,6 +17,8 @@
 </div>
 
 <!-- thymeleaf fragment in layouts.html -->
-<footer th:replace="layouts :: footer"></footer>
+<div>
+    <footer th:replace="layouts :: footer"></footer>
+</div>
 </body>
 </html>

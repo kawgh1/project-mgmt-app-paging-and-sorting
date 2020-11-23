@@ -7,7 +7,9 @@
 <body>
 
 <!-- thymeleaf fragment in layouts.html -->
-<nav th:replace="layouts :: navbar"></nav>
+<div>
+    <nav th:replace="layouts :: navbar"></nav>
+</div>
 
 <div class="container content">
     <form th:object="${manager}" th:action="@{/managers/save-update}" method="POST">
@@ -45,7 +47,9 @@
 </div>
 
 <!-- thymeleaf fragment in layouts.html -->
-<footer th:replace="layouts :: footer"></footer>
+<div>
+    <footer th:replace="layouts :: footer"></footer>
+</div>
 
 
 

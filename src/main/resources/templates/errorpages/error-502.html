@@ -7,13 +7,17 @@
 <body>
 
 <!-- thymeleaf fragment in layouts.html -->
-<nav th:replace="layouts :: navbar"></nav>
+<div>
+    <nav th:replace="layouts :: navbar"></nav>
+</div>
 <div class="container content">
 <h2 style="display: flex; justify-content: center; align-items: center;">502 Error - Bad Gateway</h2>
 <p style="display: flex; justify-content: center; align-items: center; font-size: 16px;">Request could not be processed by the server.</p>
 </div>
 
 <!-- thymeleaf fragment in layouts.html -->
-<footer th:replace="layouts :: footer"></footer>
+<div>
+    <footer th:replace="layouts :: footer"></footer>
+</div>
 </body>
 </html>
