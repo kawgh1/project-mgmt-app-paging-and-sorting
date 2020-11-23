@@ -114,13 +114,13 @@ public class ProjectController {
         model.addAttribute("allEmployees", employees);
 
         if (errors.hasErrors()) {
-            return "projects/new-project";
+            return "projects/update-project";
         }
 
         manager.addProject(project);
         managerService.save(manager);
 
-
+        // this will handle saving the updated project to the database
         projectService.save(project);
 
 
