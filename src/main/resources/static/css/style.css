@@ -97,7 +97,7 @@ body {
         margin: auto;
     }
 
-    .table td, .table th {
+    .table td, .table th, .footer {
         font-size: .5rem;
         padding: 2px;
 
