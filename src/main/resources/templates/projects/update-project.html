@@ -67,6 +67,23 @@
             </select>
         </div>
 
+        <!--        start Date, end Date-->
+
+        <label>Start Date</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.startDate}">
+        </div>
+        <label>End Date</label>
+        <div class="form-group row" style="padding-left: 20px;">
+            <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.endDate}">
+        </div>
+
+        <!--        date picker -->
+        <script type="text/javascript">
+            $('#dp3').datepicker();
+            $('#dp4').datepicker();
+        </script>
+
         <button class="btn btn-info col-2" type="submit">Update Project</button>
         <br><br>
     </form>
