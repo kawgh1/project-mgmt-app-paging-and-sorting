@@ -105,12 +105,12 @@ public class ProjectController {
 
 
 //        // display all managers
-//        List<Manager> managers = managerService.findAll();
-//        model.addAttribute("allManagers", managers);
+        List<Manager> managers = managerService.findAll();
+        model.addAttribute("allManagers", managers);
 //
 //        // display all employees
-//        List<Employee> employees = employeeService.findAll();
-//        model.addAttribute("allEmployees", employees);
+        List<Employee> employees = employeeService.findAll();
+        model.addAttribute("allEmployees", employees);
 
         if (errors.hasErrors()) {
             return "projects/update-project";
