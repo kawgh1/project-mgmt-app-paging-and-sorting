@@ -33,13 +33,13 @@ public class Project {
     @Size(min=2, max=250)
     private String description;
 
-    @NotNull(message="*Project Start Date mm/dd/yyyy required")
-    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @NotNull(message="*Project Start Date mm-dd-yyyy required")
+    @DateTimeFormat(pattern = "mm-dd-yyyy")
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    @NotNull(message="*Project End Date mm/dd/yyyy required")
-    @DateTimeFormat(pattern = "mm/dd/yyyy")
+    @NotNull(message="*Project End Date mm-dd-yyyy required")
+    @DateTimeFormat(pattern = "mm-dd-yyyy")
     @Temporal(TemporalType.DATE)
     private Date endDate;
 

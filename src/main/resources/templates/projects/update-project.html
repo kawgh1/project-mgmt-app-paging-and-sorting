@@ -73,13 +73,13 @@
 
         <label>Start Date</label>
         <div class="form-group row" style="padding-left: 20px;">
-            <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" th:field="${#dates.format(project.startDate, 'mm-dd-yyyy')}">
+            <input id="dp3" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.startDate}">
             <span style="color: firebrick" th:if="${#fields.hasErrors('startDate')}"
                   th:errors="${project.startDate}"></span>
         </div>
         <label>End Date</label>
         <div class="form-group row" style="padding-left: 20px;">
-            <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" th:field="${#dates.format(project.endDate, 'mm-dd-yyyy')}">
+            <input id="dp4" type="text" class="mb-4 col-2 col-xs-4" th:field="${project.endDate}">
             <span style="color: firebrick" th:if="${#fields.hasErrors('endDate')}"
                   th:errors="${project.endDate}"></span>
         </div>
