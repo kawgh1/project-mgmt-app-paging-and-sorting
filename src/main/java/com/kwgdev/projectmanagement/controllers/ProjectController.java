@@ -100,7 +100,9 @@ public class ProjectController {
     }
 
     @PostMapping("/save-update")
-    public String updateProject(@Valid Project project, Errors errors, Model model) {
+    public String updateProject(@Valid Project project, @RequestParam Manager manager,
+                                @RequestParam List<Employee> projectEmployees,
+                                Errors errors, Model model) {
 
 
         // display all managers
@@ -114,8 +116,14 @@ public class ProjectController {
         if (errors.hasErrors()) {
             return "projects/new-project";
         }
-        // this will handle saving the new project to the database
+
+        manager.addProject(project);
+        managerService.save(manager);
+
+
         projectService.save(project);
+
+
 
         // use a redirect to new to prevent duplicate submissions
         // always use redirect after saving data
