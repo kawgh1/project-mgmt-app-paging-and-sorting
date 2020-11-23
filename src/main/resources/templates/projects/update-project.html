@@ -51,7 +51,7 @@
 
         <label>Project Manager</label>
         <div class="form-group row" style="padding-left: 20px;">
-            <select class="form-control" th:field="${project.managers}">
+            <select class="form-control" th:field="${project.managers}" multiple="multiple">
                 <option th:each="manager : ${allManagers}"
                         th:value="${manager.managerId}"
                         th:text="${manager.firstName} + ' ' +${manager.lastName}">
