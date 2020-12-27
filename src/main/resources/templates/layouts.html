@@ -37,8 +37,10 @@
 
 <div class="container-fluid">
     <nav th:fragment="navbar" class="bg-dark navbar-dark navbar-expand-lg navbar ">
-        <a class="navbar-brand" style="margin-right:1px;" th:href="@{/}">Timelines |</a>
-        <span class="navbar-brand" style=" padding-bottom: 1px; font-size: 14px;" th:href="@{/}">Project Management</span>
+        <a class="navbar-brand" style="margin-right:1px; font-size: 1.2rem; padding-left: 0;" th:href="@{/}">Timelines |<span class="navbar-brand" style=" padding-bottom: 1px; font-size: .7rem;" th:href="@{/}">&nbsp;Project Management</span>
+
+        </a>
+
         <!-- Button for toggling the visibility of the menu -->
         <button type="button" data-target="#collapseNavbar" data-toggle="collapse" class="navbar-toggler">
             <span class="navbar-toggler-icon"></span>
