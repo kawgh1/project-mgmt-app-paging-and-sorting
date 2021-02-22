@@ -51,8 +51,8 @@
 <!--                   class="btn btn-danger btn-sm CrudButton"-->
 <!--                   onClick="if (!(confirm('Are you sure you want to delete this project manager?'))) return false"-->
 <!--                >Delete</a>-->
-                <a>Update</a>
-                <a>Delete</a>
+                <a class="btn btn-info btn-sm CrudButton">Update</a>
+                <a class="btn btn-danger btn-sm CrudButton">Delete</a>
             </td>
             <td th:each = "project : ${aManager.projects}"
                 th:text="${project.name}"></td>

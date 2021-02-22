@@ -52,8 +52,8 @@
 <!--                   class="btn btn-danger btn-sm CrudButton"-->
 <!--                   onClick="if (!(confirm('Are you sure you want to delete this employee?'))) return false"-->
 <!--                >Delete</a>-->
-                <a>Update</a>
-                <a>Delete</a>
+                <a class="btn btn-info btn-sm CrudButton">Update</a>
+                <a class="btn btn-danger btn-sm CrudButton">Delete</a>
             </td>
             <td th:text="${aEmployee.manager.firstName} + ' ' + ${aEmployee.manager.lastName}"></td>
 
