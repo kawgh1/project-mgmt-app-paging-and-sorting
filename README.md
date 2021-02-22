@@ -4,6 +4,8 @@ Based on project by Imtiaz Ahmad
 
 To view my live production site please visit: https://timelines-project-mgmt-app.herokuapp.com
 
+#### Note: Due to site visitors repeatedly deleting data, update and delete functionality has been disabled.
+
 #### Things I added:
 - the Manager entity class and implementation to be more realistic to
 project management organizations.
