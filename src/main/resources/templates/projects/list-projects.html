@@ -53,13 +53,17 @@
                 <td  th:each="manager : ${aProject.managers}"
                     th:text="${manager.firstName} + ' ' + ${manager.lastName} ?: 'None'"></td>
 
-                <td ><a th:href="@{/projects/update(proId=${aProject.projectId})}"
-                       class="btn btn-info btn-sm CrudButton">Update</a>
+                <td >
+                    <!--                Commented these out because site visitors were deleting all the data -->
+<!--                    <a th:href="@{/projects/update(proId=${aProject.projectId})}"-->
+<!--                       class="btn btn-info btn-sm CrudButton">Update</a>-->
 
-                    <a th:href="@{/projects/delete(proId=${aProject.projectId})}"
-                       class="btn btn-danger btn-sm CrudButton"
-                       onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false"
-                    >Delete</a>
+<!--                    <a th:href="@{/projects/delete(proId=${aProject.projectId})}"-->
+<!--                       class="btn btn-danger btn-sm CrudButton"-->
+<!--                       onClick="if (!(confirm('Are you sure you want to delete this project?'))) return false"-->
+<!--                    >Delete</a>-->
+                    <a>Update</a>
+                    <a>Delete</a>
                 </td>
             </tr>
         </tbody>

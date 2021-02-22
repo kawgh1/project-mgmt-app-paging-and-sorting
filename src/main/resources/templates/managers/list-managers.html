@@ -41,12 +41,18 @@
             <td th:text="${aManager.firstName}"></td>
             <td th:text="${aManager.lastName}"></td>
             <td th:text="${aManager.email}"></td>
-            <td><a th:href="@{/managers/update(mgrId=${aManager.managerId})}"
-                   class="btn btn-info btn-sm CrudButton">Update</a>
-                <a th:href="@{/managers/delete(mgrId=${aManager.managerId})}"
-                   class="btn btn-danger btn-sm CrudButton"
-                   onClick="if (!(confirm('Are you sure you want to delete this project manager?'))) return false"
-                >Delete</a>
+            <td>
+<!--                Commented these out because site visitors were deleting all the data -->
+<!--                <a -->
+<!--                    th:href="@{/managers/update(mgrId=${aManager.managerId})}"-->
+<!--                   class="btn btn-info btn-sm CrudButton"-->
+<!--            >Update</a>-->
+<!--                <a th:href="@{/managers/delete(mgrId=${aManager.managerId})}"-->
+<!--                   class="btn btn-danger btn-sm CrudButton"-->
+<!--                   onClick="if (!(confirm('Are you sure you want to delete this project manager?'))) return false"-->
+<!--                >Delete</a>-->
+                <a>Update</a>
+                <a>Delete</a>
             </td>
             <td th:each = "project : ${aManager.projects}"
                 th:text="${project.name}"></td>
